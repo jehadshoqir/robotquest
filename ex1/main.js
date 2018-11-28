@@ -137,6 +137,7 @@ function sleep(delay) {
 
 {
     // This is where the program starts.
-    main();
+   // main();
+console.log("her er f" + board[0][3]);
 }
 
