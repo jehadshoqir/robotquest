@@ -1,11 +1,12 @@
 module.exports =
-    {turn, move, updateBoard, checkIfFlagReached, cloneRobot};
+    {turn, move, updateBoard, checkIfFlagReached, cloneRobot, checkIfRobotIsOnWater, checkIfRobotIsOnTree, checkIfRobotIsOutboard};
 
 const SYMBOLS = {
     robot: setReverse('R'),
     tree: colorInGreen('T'),
     flag: colorInYellow('F'),
-    water: setBlueBg('w')
+    water: setBlueBg('w'),
+    outboard
 
 }
 module.exports.SYMBOLS = SYMBOLS;
@@ -82,6 +83,25 @@ function checkIfFlagReached(robot, board) {
     return flagReached;
 }
 
+function checkIfRobotIsOnWater(robot,board){
+    const cell = board[robot.position.line][robot.position.column];
+    let RobotIsOnWater = cell === SYMBOLS.water || cell == 'w';
+    console.log('game over');
+    return RobotIsOnWater;
+}
+function checkIfRobotIsOnTree(robot,board) {
+    const cell = board[robot.position.line] [robot.position.column];
+    let RobotIsOnTre = cell === SYMBOLS.tree || cell ==='T';
+    console.log('you are on tre ,game over');
+    return RobotIsOnTre;
+}
+
+function checkIfRobotIsOutboard(robot,board) {
+    const cell = board[robot.position.line] [robot.position.column];
+    let RobotIsOut = cell === SYMBOLS.tree || cell ==='T';
+    console.log('you are out board ,game over');
+    return RobotIsOut;
+}
 // utils
 function cloneRobot(robot) {
     let newRobot = {};
